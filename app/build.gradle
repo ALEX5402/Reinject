@@ -1,0 +1,115 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
+ext {
+    var = 'alex-reinject'
+    var1 = 'alex-reinject'
+}
+
+
+android {
+    signingConfigs {
+        release {
+            storeFile file('alex-reinject.jks')
+            keyAlias var
+            keyPassword var1
+            storePassword 'alex-reinject'
+        }
+    }
+    namespace 'com.alex.injector'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.alex.injector"
+        minSdk 23
+        targetSdk 33
+        versionCode 2
+        versionName "2.2"
+        ndk {
+            //noinspection ChromeOsAbiSupport
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86'
+
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            multiDexEnabled false
+            debuggable false
+            jniDebuggable false
+            resValue "string", "app_name", "Reinject Beta"
+            renderscriptDebuggable false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            multiDexEnabled false
+            debuggable true
+            jniDebuggable true
+            resValue "string", "app_name", "Reinject Debug"
+            renderscriptDebuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    externalNativeBuild {
+        ndkBuild {
+            path 'src/main/cpp/Android.mk'
+        }
+        ndkVersion = "24.0.8215888"
+    }
+}
+dependencies {
+    //fire base
+    implementation 'com.google.firebase:firebase-analytics:21.2.2' // Required for Analytics
+    implementation 'com.google.firebase:firebase-crashlytics:18.3.7' // Optional, if you want to use Crashlytics
+
+
+    //ktx
+    implementation 'androidx.core:core-ktx:1.10.1'
+    //volley
+    implementation 'com.android.volley:volley:1.2.1'
+    //animation
+    implementation 'com.ldoublem.loadingview:loadingviewlib:1.0'
+    //get su
+    implementation "com.github.topjohnwu.libsu:core:5.0.4"
+    implementation "com.github.topjohnwu.libsu:service:5.0.4"
+    implementation "com.github.topjohnwu.libsu:nio:5.0.4"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
+
+    //androidx
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'io.github.medyo:android-about-page:2.0.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+
+    //splash api
+    implementation 'androidx.core:core-splashscreen:1.0.1'
+
+    // toasty toast
+    implementation 'com.github.GrenderG:Toasty:1.5.2'
+
+    // zip for java
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+}

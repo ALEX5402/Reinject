@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!--    coustom theme colours-->
+    <color name="Settings">#000000</color>
+    <color name="button_back">#C1112BFF</color>\
+    <color name="progress" >#FA2A2A</color>
+    <color name="colorPrimaryDark_light">@color/m3_sys_color_dynamic_light_primary</color>
+    <color name="yollow">#F7FF00</color>
+
+
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="settings">#000000</color>
+
+    <color name="dark">#FFFFFFFF</color>
+    <color name="trans">@android:color/transparent</color>
+    <color name="android7">#DA13B7C6</color>
+
+
+</resources>

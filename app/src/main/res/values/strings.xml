@@ -1,0 +1,29 @@
+<resources>
+
+    <string name="Root" >Rooted</string>
+    <string name="copy_right" translatable="false">Copyrights © %1$d</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="Clickhere">Click Here</string>
+
+    <string name="version_1_1_0_beta_by_alex5402">Version : 6.0.2 Copyright By ALEX5402</string>
+
+    <string name="setup_fies">Setup Fies</string>
+
+    <string name="select_the_game">Game Mode 64bit</string>
+    <string name="bigbit">Game Mode 64bit</string>
+    <string name="smallbit">Game Mode 32bit</string>
+    <string name="turn_on_hacks">Inject</string>
+    <string name="india">INDIA</string>
+    <string name="global">Global</string>
+    <string name="korean_pubg">Korean Pubg</string>
+    <string name="korean">Korea</string>
+    <string name="vng_mobile">Vng Mobile</string>
+    <string name="vng_m">VNG M</string>
+    <string name="china_pubg">China Pubg</string>
+    <string name="china">China</string>
+    <string name="gerena_freefire">Gerena Freefire</string>
+    <string name="freef">64Bit</string>
+    <string name="send_feedback">Send Feedback</string>
+    <string name="please_wait">Please Wait</string>
+    <string name="bgmi_india">BGMI India</string>
+</resources>

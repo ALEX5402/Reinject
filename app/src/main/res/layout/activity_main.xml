@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark"
+    android:fitsSystemWindows="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/global8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:layout_marginBottom="27dp"
+        android:cursorVisible="true"
+        android:maxWidth="150dp"
+        android:maxHeight="100dp"
+        android:minWidth="60dp"
+        android:minHeight="48dp"
+        android:text="@string/india"
+        app:layout_constraintBottom_toTopOf="@+id/global"
+        app:layout_constraintEnd_toStartOf="@+id/global6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/global2"
+        app:layout_constraintTop_toBottomOf="@+id/card"
+        tools:tooltipText="INDIAN PUBG" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/global7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="294dp"
+        android:checked="false"
+        android:clickable="true"
+        android:contentDescription="@string/gerena_freefire"
+        android:cursorVisible="true"
+        android:focusable="true"
+        android:text="@string/freef"
+        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/global"
+        tools:tooltipText="Bit Mode" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/global2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:layout_marginBottom="27dp"
+        android:contentDescription="@string/global"
+        android:cursorVisible="true"
+        android:text="@string/global"
+        app:layout_constraintBottom_toTopOf="@+id/global5"
+        app:layout_constraintEnd_toStartOf="@+id/global8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card"
+        tools:tooltipText="Global PUBG" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/global5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="294dp"
+        android:contentDescription="@string/vng_mobile"
+        android:cursorVisible="true"
+        android:text="@string/vng_m"
+        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
+        app:layout_constraintEnd_toStartOf="@+id/global"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:tooltipText="Vietnam Pubg" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:minWidth="200dp"
+        android:minHeight="150dp"
+        android:onClick="telegram"
+        android:visibility="visible"
+        app:cardPreventCornerOverlap="true"
+        app:contentPadding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/gamelocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font"
+            android:gravity="center"
+            android:minWidth="300dp"
+            android:minHeight="150dp"
+            android:paddingStart="10dp"
+            android:text="@string/select_the_game"
+            android:textSize="50sp"
+            tools:ignore="RtlSymmetry" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/global"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="294dp"
+        android:contentDescription="@string/china_pubg"
+        android:cursorVisible="true"
+
+        android:text="@string/china"
+        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
+        app:layout_constraintEnd_toStartOf="@+id/global7"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/global5"
+        app:layout_optimizationLevel="standard|ratio"
+        tools:ignore="MissingConstraints"
+        tools:tooltipText="China Pubg" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/global6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:layout_marginBottom="27dp"
+        android:contentDescription="@string/korean_pubg"
+        android:cursorVisible="true"
+        android:maxWidth="150dp"
+        android:maxHeight="100dp"
+        android:minWidth="60dp"
+        android:minHeight="48dp"
+        android:text="@string/korean"
+        app:layout_constraintBottom_toTopOf="@+id/global7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/global8"
+        app:layout_constraintTop_toBottomOf="@+id/card"
+        tools:tooltipText="Korean Pubg" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView3"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="setupfies"
+        android:tooltipText="@string/setup_fies"
+        android:visibility="gone"
+        app:checkedIconGravity="BOTTOM_START"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499"
+        tools:ignore="PrivateResource,UnusedAttribute">
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="79dp"
+            android:layout_height="79dp"
+            android:layout_gravity="center"
+            android:progressTint="@color/android7"
+            android:secondaryProgressTint="@color/progress"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/setupfiles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/Clickhere"
+            android:fontFamily="@font/font"
+            android:text="@string/setup_fies"
+            android:textSize="30sp" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="35dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foregroundGravity="center"
+        android:onClick="OnSupport"
+
+        android:tooltipText="Support"
+        app:fabCustomSize="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="50dp"
+        app:srcCompat="@drawable/about_icon_github"
+        tools:ignore="ContentDescription,UnusedAttribute,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/Version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:tooltipText="Settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="UnusedAttribute" />
+
+    <ImageView
+        android:id="@+id/imageFilterButton"
+        android:layout_width="48dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:contentDescription="@string/copy_right"
+        android:focusable="true"
+        android:foregroundGravity="right"
+        android:tooltipText="Settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_settings"
+        tools:ignore="ContentDescription,UnusedAttribute,TouchTargetSizeCheck" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:layout_marginBottom="115dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foregroundGravity="center"
+        android:minWidth="300dp"
+        android:minHeight="100dp"
+        android:onClick="hackbutton"
+        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/global"
+        app:layout_constraintVertical_bias="0.545">
+
+        <ProgressBar
+            android:id="@+id/injectprogress"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="79dp"
+            android:layout_height="79dp"
+            android:layout_gravity="center"
+            android:progressTint="@color/android7"
+            android:secondaryProgressTint="@color/progress"
+            android:visibility="gone"
+            tools:ignore="PrivateResource" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/turn_on_hacks"
+            android:fontFamily="@font/font"
+            android:text="@string/turn_on_hacks"
+            android:textSize="30sp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loadingview"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:background="#000000"
+        android:alpha="0.9"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="246dp"
+            android:layout_height="247dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.ldoublem.loadingviewlib.view.LVBlock
+                android:id="@+id/animation"
+                android:layout_width="119dp"
+                android:layout_height="100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/hehaeh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/please_wait"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/animation" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
