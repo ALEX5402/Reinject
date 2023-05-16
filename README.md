@@ -13,7 +13,11 @@ it is a simple app to use esp hacks on all pubg mobile with Root access no nesse
 - some emulators may not work because of x86
 ## Support
 
-For support, [Telegram](t.me//alex5402)
+For support,
+ [Telegram](t.me//alex5402)
+[Support Group](https://t.me/ReinjectOfficial)
+
+
 ## Screenshots
 
 ![App Screenshot](https://github.com/ALEX5402/Reinject/blob/main/demo/photo_2023-05-16_21-31-14.jpg)
