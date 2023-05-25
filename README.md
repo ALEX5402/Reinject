@@ -3,8 +3,13 @@
 
 it is a simple app to use esp hacks on all pubg mobile with Root access no nessessery magisk module need to make it work
 
+# To Make It Work On 32 Bit Games Do this
 
-
+- download the laest version of Xposed Frame Work [Xposed download](https://github.com/LSPosed/LSPosed/releases/tag/v1.8.6)
+- then falash it to magisk and reboot 
+- then simply install Reinject and enable this Modeule As Xposed Modeule 
+- Select Recomended apps what it Says 
+- done Ready to go
 
 ## Install Instructions
 
