@@ -9,7 +9,6 @@ class MainViewModel : ViewModel(){
     var versionmanager: Boolean = false
     var finalzippath : String = ""
     var savestate : Boolean = false
-    var bitmode : Boolean = false
     var liburl : String = ""
     var versioncheck : Boolean = true
     var phreasedata :Boolean = false

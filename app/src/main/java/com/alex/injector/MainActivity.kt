@@ -181,15 +181,7 @@ class MainActivity : AppCompatActivity(){
         }
             binding.global.setOnCheckedChangeListener { _  , isChecked ->
                 if (isChecked) {
-                    if (modelroot.bitmode)
-                    if (modelroot.bitmode)
-                    {
-                        modelroot.libpath = localpath+libv3
-                    } else
-                    {
-                        modelroot.libpath = localpath+libv1
-                    }
-
+                    modelroot.libpath = localpath+libv1
                     modelroot.packagename = gamename[5]
                     modelroot.versionmanager = true
                     binding.global2.isChecked = false
@@ -203,14 +195,7 @@ class MainActivity : AppCompatActivity(){
 
             binding.global2.setOnCheckedChangeListener { _  , isChecked ->
                 if (isChecked) {
-                    if (modelroot.bitmode)
-                    {
-                        modelroot.libpath = localpath+libv3
-                    }
-                    else
-                    {
-                        modelroot.libpath = localpath+libv1
-                    }
+                  modelroot.libpath = localpath+libv1
                     modelroot.packagename = gamename[4]
                     modelroot.versionmanager = true
                     binding.global.isChecked = false
@@ -223,14 +208,7 @@ class MainActivity : AppCompatActivity(){
             }
             binding.global8.setOnCheckedChangeListener { _  , isChecked -> // bgmi
                 if (isChecked) {
-                    if (modelroot.bitmode)
-                    {
-                        modelroot.libpath = localpath+libv4
-
-                    } else
-                    {
-                        modelroot.libpath = localpath+libv2
-                    }
+                    modelroot.libpath = localpath+libv2
                   modelroot.packagename = gamename[0]
                     modelroot.versionmanager= true
                     binding.global.isChecked = false
@@ -244,14 +222,7 @@ class MainActivity : AppCompatActivity(){
             }
             binding.global6.setOnCheckedChangeListener { _  , isChecked ->
                 if (isChecked) {
-                    if (modelroot.bitmode)
-                    {
-                        modelroot.libpath = localpath+libv3
-
-                    } else
-                    {
-                        modelroot.libpath = localpath+libv1
-                    }
+                    modelroot.libpath = localpath+libv1
                     modelroot.packagename = gamename[1]
                     Log.i(TAG , gamename[1])
                     modelroot.versionmanager= true
@@ -266,14 +237,7 @@ class MainActivity : AppCompatActivity(){
             }
             binding.global5.setOnCheckedChangeListener { _  , isChecked ->
                 if (isChecked) {
-                    if (modelroot.bitmode)
-                    {
-                        modelroot.libpath = localpath+libv3
-
-                    } else
-                    {
-                        modelroot.libpath = localpath+libv1
-                    }
+                    modelroot.libpath = localpath+libv1
                     modelroot.packagename = gamename[3]
                     modelroot.versionmanager= true
                     binding.global.isChecked = false
@@ -497,7 +461,6 @@ fun notrooted ( )
 
         }
         modelroot.finalzippath = zippath
-
         binding.loadingview.visibility = View.GONE
         binding.animation.stopAnim()
         binding.materialCardView3.visibility = View.GONE
@@ -508,7 +471,6 @@ fun notrooted ( )
         binding.global6.visibility = View.VISIBLE
         binding.global5.visibility = View.VISIBLE
         binding.global7.visibility = View.VISIBLE
-
         binding.materialCardView.visibility = View.VISIBLE  // hack button
     }
 
@@ -645,8 +607,7 @@ fun notrooted ( )
              {
                  val injector = handlerclass(this,pkg,libpath)
                  injector.Connect()
-             },1500
-         )
+             },1500)
          Toast.makeText(this , "Injecting ....." ,Toast.LENGTH_LONG).show()
          handler.postDelayed({
              alldone2()
