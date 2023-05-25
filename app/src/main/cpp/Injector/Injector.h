@@ -2,10 +2,10 @@
 
 int injectRemoteProcess();
 
+// this cpp is redesigned by alex5402 on 12th march to fix some arch x86 devices don't do anything if you don't have proper information about this
 const char *pkgName = "";
 const char *libraryPath = "";
 
-// this cpp is redesigned by alex5402 on 12th march to fix some arch x86 devices don't do anything if you don't have proper information about this
 
 pid_t pid = 0;
 
@@ -28,30 +28,40 @@ int initInject() {
     return res;
 }
 
+
+
 struct pt_regs currentRegs, originalRegs;
 int callRemoteMmap() {
-    long parameters[6];
+  long parameters[1];
+
 
     void *mmapAddr = getRemoteFuncAddr(pid, libcPath, (void *)mmap);
     LOGI("Mmap Function Address: 0x%lx\n", (uintptr_t)mmapAddr);
 
-    //void *mmap(void *start, size_t length, int prot, int flags, int fd, off_t offsize);
-    parameters[0] = 0; //Not needed
+
+   /*
+    * // void *mmap(void *start, size_t length, int prot, int flags, int fd, off_t offsize);
+   parameters[0] = 0; //Not needed
     parameters[1] = 0x3000;
     parameters[2] = PROT_READ | PROT_WRITE | PROT_EXEC;
     parameters[3] = MAP_ANONYMOUS | MAP_PRIVATE;
     parameters[4] = 0; //Not needed
     parameters[5] = 0; //Not needed
+    */
+    parameters[0] = 256;
+
 
     //Call the mmap function of the target process
-    if (ptrace_call(pid, (uintptr_t)mmapAddr, parameters, 6, &currentRegs)) {
+    if (ptrace_call(pid, (uintptr_t)mmapAddr, parameters, 1, &currentRegs)) {
         return -1;
     }
+
+
     return 0;
 }
 
 int callRemoteDlopen(void *remoteMmapAddr) {
-    long parameters[6];
+    long parameters[2];
 
     //Return value of dlopen is the start address of the loaded module
     //void *dlopen(const char *filename, int flag);
@@ -62,7 +72,7 @@ int callRemoteDlopen(void *remoteMmapAddr) {
     void *dlErrorAddr = getDlerrorAddr(pid);
     LOGE("dlopen getRemoteFuncAddr: 0x%lx", (uintptr_t)dlopen_addr);
 
-    //Calls dlopen which loads the lib
+    //Calls dlopen which loads the lib for hook the lib into process memory
     if (ptrace_call(pid, (uintptr_t) dlopen_addr, parameters, 2, &currentRegs) == -1) {
         LOGE("Call dlopen Failed");
         return -1;
@@ -112,7 +122,7 @@ int injectRemoteProcess() {
 
     // Return value is the starting address of the memory map
     void *remoteMapMemoryAddr = (void *)ptrace_getret(&currentRegs);
-    LOGI("Remote Process Map Address: 0x%lx", (uintptr_t)remoteMapMemoryAddr);
+    LOGI("Remote Process Map Address: 0x%x", (uintptr_t)remoteMapMemoryAddr);
 
     //Params:            pid,             start addr,                      content,          size
     if (ptrace_writedata(pid, (uint8_t *) remoteMapMemoryAddr, (uint8_t *) libraryPath, strlen(libraryPath) + 1) == -1) {

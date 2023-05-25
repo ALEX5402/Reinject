@@ -10,7 +10,6 @@ import com.topjohnwu.superuser.Shell
 class app : Application()
 
 {
-
     override fun onCreate() {
         super.onCreate()
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
@@ -18,7 +17,6 @@ class app : Application()
         Shell.getShell().apply {
             shell = true
         }
-
     }
 
 }

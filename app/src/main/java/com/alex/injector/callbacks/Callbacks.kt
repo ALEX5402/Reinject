@@ -9,15 +9,11 @@ import com.topjohnwu.superuser.ipc.RootService
 class Callbacks : RootService(), Handler.Callback {
 
     override fun onBind(intent: Intent): IBinder {
-        Log.e("Alexinjector", "RootService: onBind")
-
         val handler = Handler(Looper.getMainLooper(), this)
         return Messenger(handler).binder
     }
 
     override fun handleMessage(message: Message): Boolean {
-        Log.e("Alexinjector", "RootService: handleMessage")
-
         if (message.what != 1) {
             return false
         }

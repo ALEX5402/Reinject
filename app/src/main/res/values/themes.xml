@@ -1,9 +1,37 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.Alex" parent="Theme.Material3.DynamicColors.DayNight">
-        <item name="android:statusBarColor">@color/trans</item>
+    <style name="Theme.Alex" parent="Theme.Material3.DynamicColors.Light">
         <item name="colorPrimary" >@color/android7</item>
-        <item name="statusBarBackground" > @color/dark</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/statusbarcolour</item>
+    </style>
+    <style name="Theme.Settings" parent="Theme.Material3.DynamicColors.Light">
+        <item name="colorPrimary" >@color/android7</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/statusbarcolour</item>
+    </style>
+
+
+    <style name="metarialTogglebutton">
+        <item name="android:paddingStart">8dip</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Material.Body1</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="Heading_setings">
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textAlignment">viewStart</item>
 
     </style>
+    <style name="RippleEffect">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:focusable">true</item>
+
+    </style>
+
+
 </resources>

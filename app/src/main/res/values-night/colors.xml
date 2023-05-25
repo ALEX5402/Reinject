@@ -14,6 +14,9 @@
     <color name="settings">#FFFFFF</color>
     <color name="white">#FFFFFFFF</color>
     <color name="dark">#1E1A1A</color>
+
+    <color name="statusbarcolour">#1E1A1A</color>
+    <color name="bitmode">#FFFFFF</color>
     <color name="trans">@android:color/transparent</color>
     <color name="android7">#DA13B7C6</color>
 

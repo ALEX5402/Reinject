@@ -17,9 +17,9 @@ import androidx.annotation.NonNull;
 import com.alex.injector.callbacks.Callbacks;
 
 public class handlerclass implements Handler.Callback {
-    private  MSGConnection messageConnection;
+    private  InternalClass messageConnection;
 
-    public  MSGConnection mSGConnection = messageConnection;
+    public  InternalClass mSGConnection = messageConnection;
     private Messenger remoteMessenger;
     private final Messenger replyMessenger = new Messenger(new Handler(Looper.getMainLooper(), this));
 
@@ -37,12 +37,12 @@ public class handlerclass implements Handler.Callback {
     public boolean handleMessage(@NonNull Message message) {
         int result = message.getData().getInt("result");
         if (result == -1) {
-            Log.i("handleMessage", "MSGConnection: handleMessage using -1" + result);
+            Log.i("handleMessage", "MSGConnection: handleMessage successful" + result);
         } else
         if (result == 0) {
-            Log.i("handleMessage", "MSGConnection: handleMessage using 0" + result);
+            Log.i("handleMessage", "MSGConnection: handleMessage using 0" +     result);
         } else {
-            Log.i("handleMessage", "MSGConnection: handleMessage using 1" + result);
+            Log.i("handleMessage", "MSGConnection: handleMessage using 1"   +   result);
         }
         return false;
     }
@@ -50,47 +50,34 @@ public class handlerclass implements Handler.Callback {
 public void Connect()
 {
     try {
-        Callbacks.bind(new Intent(context, Callbacks.class), new MSGConnection());
+        Callbacks.bind(new Intent(context, Callbacks.class), new InternalClass());
     }catch (Exception e)
     {
         e.printStackTrace();
     }
 
-
 }
- public void disconnect()
-    {
+public void disconnect()
+ {
 try {
     Callbacks.unbind(mSGConnection);
-}catch ( Exception e)
+} catch ( Exception e)
 {
-e.printStackTrace();
+    e.printStackTrace();
 }
     }
 
-    public class MSGConnection implements ServiceConnection {
-        MSGConnection() {
+    public class InternalClass implements ServiceConnection {
+        InternalClass() {
         }
 
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-//            Log.d("alexiject", "MSGConnection: onServiceConnected");
-//            Log.d("alexiject", "MSGConnection: onServiceConnected");
-//            Log.d("alexiject", "MSGConnection: onServiceConnected");
-//            Log.d("alexiject", "MSGConnection: onServiceConnected");
-//            Log.d("alexiject", "MSGConnection: onServiceConnected");
-
             remoteMessenger = new Messenger(iBinder);
             messageConnection = this;
             Message message = Message.obtain((Handler) null, 1);
             message.getData().putString("pkg", packagename);
             message.getData().putString("lib", libpath);
-//            Log.d("alexiject", packagename+libpath);
-//            Log.d("alexiject", packagename+libpath);
-//            Log.d("alexiject", packagename+libpath);
-//            Log.d("alexiject", packagename+libpath);
-//            Log.d("alexiject", packagename+libpath);
-//            Log.d("alexiject", packagename+libpath);
             message.replyTo = replyMessenger;
 
             try {
@@ -101,7 +88,6 @@ e.printStackTrace();
         }
         @Override
         public void onServiceDisconnected(ComponentName componentName) {
-            Log.d("alexiject", "MSGConnection: onServiceDisconnected");
             remoteMessenger = null;
             messageConnection = null;
         }

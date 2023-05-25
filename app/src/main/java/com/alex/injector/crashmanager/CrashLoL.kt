@@ -46,4 +46,9 @@ class CrashLoL : AppCompatActivity() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        System.exit(1)
+        super.onBackPressed()
+    }
 }

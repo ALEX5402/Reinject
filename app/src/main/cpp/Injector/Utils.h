@@ -62,8 +62,16 @@ void setupSystemLibs() {
             linkerPath = "/system/bin/linker64";
             libDLPath = "/system/lib64/libdl.so";
         }
-    } else if (strcmp(sysArchitecture, "armeabi-v7a") == 0) {
-        arch = deviceArchitecture::armeabi_v7a;
+    } else if (strcmp(sysArchitecture, "armeabi-v7a") == 1) {  // maay be it will work some 32 bit devices
+//        arch = deviceArchitecture::armeabi_v7a;
+//        libcPath = "/apex/com.android.runtime/lib/bionic/libc.so";
+//        linkerPath = "/apex/com.android.runtime/bin/linker";
+//        libDLPath = "/apex/com.android.runtime/lib/bionic/libdl.so";
+//
+            libcPath = "/system/lib/libc.so";
+            linkerPath = "/system/bin/linker";
+            libDLPath = "/system/lib/libdl.so";
+
     } else {
         arch = deviceArchitecture::Unknown;
         LOGE("Device not supported");

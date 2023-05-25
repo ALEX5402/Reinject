@@ -1,4 +1,12 @@
 <resources>
+    <string-array name="scope" >
+        <item>com.pubg.imobile</item>
+        <item>com.tencent.ig</item>
+        <item>com.pubg.krmobile</item>
+        <item>com.pubg.vngmobile</item>
+        <item>com.tencent.tmgp.pubgmhd</item>
+
+    </string-array>
 
     <string name="Root" >Rooted</string>
     <string name="copy_right" translatable="false">Copyrights © %1$d</string>
@@ -12,6 +20,9 @@
     <string name="select_the_game">Game Mode 64bit</string>
     <string name="bigbit">Game Mode 64bit</string>
     <string name="smallbit">Game Mode 32bit</string>
+    <string name="smallbits">32 bit</string>
+    <string name="bigbits">64 bit</string>
+
     <string name="turn_on_hacks">Inject</string>
     <string name="india">INDIA</string>
     <string name="global">Global</string>
@@ -26,4 +37,17 @@
     <string name="send_feedback">Send Feedback</string>
     <string name="please_wait">Please Wait</string>
     <string name="bgmi_india">BGMI India</string>
+    <string name="settings">Settings</string>
+    <string name="clear_cache_files">Clear Cache files</string>
+    <string name="support_me">Source Code</string>
+    <string name="malicious">Malicious</string>
+    <string name="x86_mode_for_emulators_beta">X86 Mode For Emulators (Coming Soon)</string>
+    <string name="_64_bit_mode_ptrace_recomended">64 Bit Mode Ptrace (Recommended)</string>
+    <string name="_32_bit_mode_xposed_experimental">32 Bit Mode Xposed (experimental)</string>
+    <string name="select_artitecture">Select Artitecture</string>
+    <string name="xposed_description">Xposed Inject 2.3 (experimental)</string>
+    <string name="clearcache" >Cache Cleared</string>
+    <string name="pleaserestartapp" >Pleasr Restart The Application To Take Effect</string>
+
+
 </resources>

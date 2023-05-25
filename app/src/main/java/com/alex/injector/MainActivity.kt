@@ -2,12 +2,15 @@ package com.alex.injector
 
 import android.annotation.SuppressLint
 import android.content.*
+import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.*
 import android.preference.PreferenceManager
 import android.util.Log
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -39,14 +42,17 @@ import com.alex.injector.objects.global.Companion.IMAGEBUTTO_NKEY
 import com.alex.injector.objects.global.Companion.LOADING_VIEW_VISIBILITY_KEY
 import com.alex.injector.objects.global.Companion.PROGRESS_BAR
 import com.alex.injector.objects.global.Companion.Password
+import com.alex.injector.objects.global.Companion.PtraceMode
 import com.alex.injector.objects.global.Companion.SETUP_BUTTON_VISIBILITY_KEY
 import com.alex.injector.objects.global.Companion.SETUP_FILES
 import com.alex.injector.objects.global.Companion.SETUP_FILES_VISIBILITY_KEY
 import com.alex.injector.objects.global.Companion.TAG
+import com.alex.injector.objects.global.Companion.XPOSEMODE
 import com.alex.injector.objects.global.Companion.changes
 import com.alex.injector.objects.global.Companion.gamename
 import com.alex.injector.objects.global.Companion.shell
 import com.alex.injector.objects.global.Companion.updatesinfo
+import com.alex.injector.settings.Settings
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
@@ -76,6 +82,7 @@ class MainActivity : AppCompatActivity(){
     private lateinit var prefs : SharedPreferences
     external fun passwoeddd() : String?
 
+        @SuppressLint("ObsoleteSdkInt", "SetTextI18n")
         override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, true)
         super.onCreate(savedInstanceState)
@@ -93,20 +100,28 @@ class MainActivity : AppCompatActivity(){
                 modelroot.check
             }
         }
+          //  status bar fix
+            if (!isDarkTheme(this))
+            {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    val window: Window = this.window
+                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                    window.statusBarColor = this.resources.getColor(R.color.statusbarcolour)
+                }
+            }
             val localpath = global.localpath()
             val libv1 = global.libv1()
             val libv2 = global.libv2()
             val libv3 = global.libv3()
             val libv4 = global.libv4()
-            //layout setup
-        supportActionBar?.hide()
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
             setupCrashLogging()
             dafaultSetup()
             thread {
-
-          if (shell){
+                if (shell){
                     Snackbar.make(binding.root , "Shell Initialized",Snackbar.LENGTH_SHORT).show()
                 }
                 updateapi(this)
@@ -134,7 +149,6 @@ class MainActivity : AppCompatActivity(){
                 }
             }
   thread {
-
       phreasedata()
       if (savedInstanceState != null) {
         binding.imageFilterButton.visibility = savedInstanceState.getInt(IMAGEBUTTO_NKEY)
@@ -161,20 +175,19 @@ class MainActivity : AppCompatActivity(){
 
             Changes("Whats new in this Update", updatesinfo)
         binding.imageFilterButton.setOnClickListener {
-         Toasty.warning(this    , "We are working on this feature",Toasty.LENGTH_SHORT).show()
+            val intent = Intent(this,Settings::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right,R.anim.activity_out)
         }
             binding.global.setOnCheckedChangeListener { _  , isChecked ->
                 if (isChecked) {
                     if (modelroot.bitmode)
+                    if (modelroot.bitmode)
                     {
-
                         modelroot.libpath = localpath+libv3
-
                     } else
                     {
-
                         modelroot.libpath = localpath+libv1
-
                     }
 
                     modelroot.packagename = gamename[5]
@@ -192,15 +205,12 @@ class MainActivity : AppCompatActivity(){
                 if (isChecked) {
                     if (modelroot.bitmode)
                     {
-
                         modelroot.libpath = localpath+libv3
                     }
                     else
                     {
-
                         modelroot.libpath = localpath+libv1
                     }
-
                     modelroot.packagename = gamename[4]
                     modelroot.versionmanager = true
                     binding.global.isChecked = false
@@ -210,42 +220,15 @@ class MainActivity : AppCompatActivity(){
                 } else {
                     modelroot.versionmanager= false
                 }
-
-            }
-            binding.global7.setOnCheckedChangeListener { _ ,lol -> // Bitmode
-                if (lol)
-                {
-                    binding.gamelocal.setText(R.string.smallbit)
-                    binding.global7.setText("32 BIT")
-                    modelroot.bitmode = true
-                    binding.global.isChecked = false
-                    binding.global2.isChecked = false
-                    binding.global8.isChecked = false
-                    binding.global6.isChecked = false
-                    binding.global5.isChecked = false
-
-                } else {
-                    binding.gamelocal.setText(R.string.bigbit)
-                    binding.global.isChecked = false
-                    binding.global2.isChecked = false
-                    binding.global8.isChecked = false
-                    binding.global6.isChecked = false
-                    binding.global5.isChecked = false
-                    modelroot.bitmode = false
-                    binding.global7.setText("64 BIT")
-                }
-
             }
             binding.global8.setOnCheckedChangeListener { _  , isChecked -> // bgmi
                 if (isChecked) {
                     if (modelroot.bitmode)
                     {
-
                         modelroot.libpath = localpath+libv4
 
                     } else
                     {
-
                         modelroot.libpath = localpath+libv2
                     }
                   modelroot.packagename = gamename[0]
@@ -305,6 +288,9 @@ class MainActivity : AppCompatActivity(){
 
 
     }
+
+
+
     fun telegram ( view: View )
     {
         openurl("https://t.me/ALEX5402")
@@ -312,6 +298,8 @@ class MainActivity : AppCompatActivity(){
     }
      fun Changes (title:String, body: JSONArray)
      {
+         val SharedPreferences = this.getSharedPreferences("Settings", Context.MODE_PRIVATE)
+         val editor = SharedPreferences.edit()
          val updatechanges = MaterialAlertDialogBuilder(this)
          if (!prefs.getBoolean(changes , false))
          {
@@ -328,7 +316,7 @@ class MainActivity : AppCompatActivity(){
              updatechanges.setMessage(changes)
              updatechanges.setPositiveButton("OK") { _ , _ ->
                  prefs.edit().putBoolean(global.changes,true).apply()
-
+                 editor.putBoolean(PtraceMode,true).apply()
              }
              updatechanges.setCancelable(false)
              updatechanges.show()
@@ -337,11 +325,9 @@ class MainActivity : AppCompatActivity(){
 
      private fun dafaultSetup() {
          if (!modelroot.files){
-             if (modelroot.isDeviceRooted())
+             if (isRootAvailable())
                  return defaultview()
-             if(modelroot.isEmulator())
-                 return closesystem("Device is an emulator")
-             if (!modelroot.isDeviceRooted())
+             if (Shell.isAppGrantedRoot() == false)
                  return closesystem("Device is Not rooted")
          }else{
              checkfiles()
@@ -349,8 +335,22 @@ class MainActivity : AppCompatActivity(){
 
 
     }
+
+    fun isRootAvailable(): Boolean {
+        val pathDirs = System.getenv("PATH").split(":")
+        for (pathDir in pathDirs) {
+            if (File(pathDir, "su").exists()) {
+                return true
+            }
+        }
+        return false
+    }
+
+
     fun closesystem ( message: String  )
     {
+        notrooted()
+        Toasty.error(this,message,Toasty.LENGTH_LONG).show()
         Toasty.error(this,message,Toasty.LENGTH_LONG).show()
         Thread.sleep(2000)
         System.exit(1)
@@ -380,6 +380,10 @@ class MainActivity : AppCompatActivity(){
             binding.global7.visibility = View.VISIBLE
             binding.materialCardView.visibility = View.VISIBLE
         }
+    }
+    fun isDarkTheme(context: Context): Boolean {
+        val currentNightMode = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return currentNightMode == Configuration.UI_MODE_NIGHT_YES
     }
     fun toast ( meassage : String , duration: Int)
     {
@@ -419,9 +423,24 @@ class MainActivity : AppCompatActivity(){
         binding.materialCardView3.visibility = View.VISIBLE  // setup button
     }
 
-
+fun notrooted ( )
+{
+    binding.card.visibility = View.GONE
+    binding.global2.visibility = View.GONE
+    binding.global8.visibility = View.GONE
+    binding.global6.visibility = View.GONE
+    binding.global5.visibility = View.GONE
+    binding.global.visibility = View.GONE
+    binding.global7.visibility = View.GONE
+    binding.materialCardView.visibility = View.GONE  // hack button
+    binding.materialCardView3.visibility = View.VISIBLE  // setup button
+    binding.materialCardView3.isEnabled = false  // setup button
+}
     fun setupfies(view: View) {
-
+        val SharedPreferences = this.getSharedPreferences("Settings", Context.MODE_PRIVATE)
+        val xposedmode = SharedPreferences.getBoolean(XPOSEMODE,false)
+        val ptracemode = SharedPreferences.getBoolean(PtraceMode,false)
+        val startdownload = PointerAngel(this)
         val versionmanager = modelroot.versioncheck
         val checint = isInternetConnected()
         val database = modelroot.phreasedata
@@ -433,14 +452,11 @@ class MainActivity : AppCompatActivity(){
                 if (!database) {
                     phreasedata()
                 }
-//                Log.w("server status ", notice)
-
-                if (notice.equals("close")
-                )
+                if (notice.equals("close"))
                    return importentNotice(this)
 
-                    val startdownload = PointerAngel(this)
-
+                if (!(xposedmode or ptracemode))
+                    return Toasty.error(this,"Please Select Perfect Game settings and Restart The app",Toasty.LENGTH_LONG).show()
                     binding.progressBar.visibility = View.VISIBLE
                     binding.setupfiles.visibility = View.GONE
                     binding.materialCardView3.isEnabled = false
@@ -463,8 +479,25 @@ class MainActivity : AppCompatActivity(){
     }
 
     fun alldone( zippath : String  ) {
+        val SharedPreferences = this.getSharedPreferences("Settings", Context.MODE_PRIVATE)
+        val xposedmode = SharedPreferences.getBoolean(XPOSEMODE,false)
+        val ptracemode = SharedPreferences.getBoolean(PtraceMode,false)
+
+        if(xposedmode)
+        {
+            binding.gamelocal.setText(R.string.smallbit)
+            binding.global7.setText(R.string.smallbits)
+            binding.global7.isChecked = xposedmode
+        }
+        if (ptracemode)
+        {
+            binding.gamelocal.setText(R.string.bigbit)
+            binding.global7.setText(R.string.bigbits)
+            binding.global7.isChecked = ptracemode
+
+        }
         modelroot.finalzippath = zippath
-        Log.w("ZIPPATH", zippath)
+
         binding.loadingview.visibility = View.GONE
         binding.animation.stopAnim()
         binding.materialCardView3.visibility = View.GONE
@@ -475,8 +508,10 @@ class MainActivity : AppCompatActivity(){
         binding.global6.visibility = View.VISIBLE
         binding.global5.visibility = View.VISIBLE
         binding.global7.visibility = View.VISIBLE
+
         binding.materialCardView.visibility = View.VISIBLE  // hack button
     }
+
     fun somethingwrong ( )
     {
         val localpath = global.localpath()
@@ -514,7 +549,6 @@ class MainActivity : AppCompatActivity(){
     }
 
      fun alldone2( ) {
-
          binding.loadingview.visibility = View.GONE
          binding.animation.stopAnim()
          binding.materialCardView.isEnabled = true
@@ -523,22 +557,19 @@ class MainActivity : AppCompatActivity(){
          binding.global8.isEnabled = true
          binding.global6.isEnabled = true
          binding.global5.isEnabled = true
-         binding.global7.isEnabled = true
          binding.floatingActionButton.isEnabled = true
          binding.materialCardView.visibility = View.VISIBLE  // hack button
      }
 
     fun hackbutton(view: View)
     {
-
         val versioncheck = modelroot.versionmanager
-
-       if(!versioncheck ) {
-           //Log.e(TAG , " version check = false"  )
-           Toasty.error(this, " Please Select the game version " , Toasty.LENGTH_LONG ) .show()
-           return
-       }
-      //  Log.i(TAG , "Starting Injecting .... ")
+        val SharedPreferences = this.getSharedPreferences("Settings", Context.MODE_PRIVATE)
+        val xposedmode = SharedPreferences.getBoolean(XPOSEMODE,false)
+        val ptracemode = SharedPreferences.getBoolean(PtraceMode,false)
+        val zippath = modelroot.finalzippath
+       if(!versioncheck )
+          return Toasty.error(this, " Please Select the game version " , Toasty.LENGTH_LONG ) .show()
         binding.loadingview.visibility = View.VISIBLE
         binding.animation.startAnim()
         binding.materialCardView.isEnabled = false
@@ -548,20 +579,61 @@ class MainActivity : AppCompatActivity(){
         binding.global6.isEnabled = false
         binding.global5.isEnabled = false
         binding.floatingActionButton.isEnabled = false
-        binding.global7.isEnabled = false
-      //  Log.i(TAG , "Wait .... ")
-        launchPackage(this,modelroot.packagename)
-        Log.i(TAG ,modelroot.packagename)
-        val zippath = modelroot.finalzippath
-        if (isfileExist(zippath))
+
+
+
+        if (xposedmode)
         {
-            val extract = Extract(zippath , this)
-            extract.execute("i love you")
-          //  Log.i(TAG , zippath)
+            try {
+
+                global.libpath = modelroot.libpath
+                if (isfileExist(zippath))
+                {
+                    val extract = Extract(zippath , this,true,modelroot.packagename,true)
+                    extract.execute("i love you")
+                }else {
+                    val extract2 = Extract(zippath , this,true,modelroot.packagename,false)
+                    extract2.execute("i love you")
+                }
+
+
+            }catch (e:Exception)
+            {
+                e.printStackTrace()
+            }
+        }else
+        {
+            Toast.makeText(this,"Xposed Mode Disabled Injecting Useing ptrace",Toast.LENGTH_LONG).show()
+
         }
-        if (!isfileExist(zippath))
-         //   Log.w("injector","injecting using zip path not existed")
-            return injection()
+        Log.i(TAG ,modelroot.packagename)
+
+        if (ptracemode){
+            launchPackage(this,modelroot.packagename)
+
+            if (isfileExist(zippath))
+            {
+                val extract = Extract(zippath , this,false,modelroot.packagename,true)
+                extract.execute("i love you")
+            } else {
+                val extract = Extract(zippath , this,false,modelroot.packagename,false)
+                extract.execute("i love you")
+
+            }
+        }
+        else
+        {
+            Toast.makeText(this,"Ptrace Mode Is disabled Injecting Using Xposed",Toast.LENGTH_LONG).show()
+        }
+
+    }
+    fun xposedinject ( )
+    {
+        val handler = Handler()
+        handler.postDelayed({
+            launchPackage(this,modelroot.packagename)
+            alldone2()
+        },2000)
 
     }
 
@@ -569,7 +641,7 @@ class MainActivity : AppCompatActivity(){
          val pkg = modelroot.packagename
          val libpath = modelroot.libpath
          val handler = Handler()
-         handler.postDelayed(
+        handler.postDelayed(
              {
                  val injector = handlerclass(this,pkg,libpath)
                  injector.Connect()
@@ -826,11 +898,6 @@ class MainActivity : AppCompatActivity(){
                       responce.getJSONArray("changes"),
                       responce.getString("serverstatus")
                           )
-//                    Log.w("Database" , global.jsondata())
-//                    Log.w("Database" , database.serverstatus)
-//                    Log.w("Database" , database.serverstatus)
-//                    Log.w("Database" , database.serverstatus)
-//                    Log.w("Database" , database.serverstatus)
                     global.serverstatus = database.serverstatus
 
                     val currentversion = context.packageManager.getPackageInfo(context.packageName,0).versionName
@@ -895,7 +962,6 @@ class MainActivity : AppCompatActivity(){
                     modelroot.liburl = updateInfo.libs
                     modelroot.phreasedata = true
                 } catch (e: JSONException) {
-                   // Log.e(TAG , e.toString())
                     modelroot.phreasedata = false
                     e.printStackTrace()
                 }
@@ -917,20 +983,6 @@ class MainActivity : AppCompatActivity(){
         super.onDestroy()
          val injector = handlerclass(this ,modelroot.packagename,modelroot.libpath)
           injector.disconnect()
-    }
-
-    // to add menu  funtion
-    fun clearCacheFiles(context: Context) {
-        val cacheDir = context.cacheDir // Get the cache directory
-        if (cacheDir.exists()) {
-            val files = cacheDir.listFiles() // Get all files in the cache directory
-            if (files != null) {
-                for (file in files) {
-                    file.delete() // Delete each file
-                }
-                Log.w("Cache" , "All files are cleared")
-            }
-        }
     }
 
 }

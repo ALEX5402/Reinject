@@ -6,20 +6,26 @@ class global {
 
      companion object {
 //        startup updatelog prefs key
-         var changes : String = "changes4"
-         val arrayString1 = "[ \"Added Metereal ui Day theme\",\n" +
-                 "             \"Improved Progressbar Colour\",\n" +
-                 "             \"Fixed landscape mode bug\",\n" +
-                 "             \"Fixed The Ui Thread Crash\",\n" +
-                 "             \"fix dark and day mode theme\",\n" +
-                 "             \"add auto open game option After click open esp\",\n" +
-                 "             \"add auto New progressdialog\",\n" +
-                 "             \"fixed the old dpi ishu\"]"
+         var changes : String = "changes5"
+         val arrayString1 = "[ \"Added Xposed Api\",\n" +
+                 "             \"Improved Statusbar Colour\",\n" +
+                 "             \"Fixed 32 bit \",\n" +
+                 "             \"Supports Lesposed\",\n" +
+                 "             \"Supports Xposed Old sks\",\n" +
+                 "             \"Support Emulators With Xposed Installed Only 32 bit\",\n" +
+                 "             \"New Setting Tab\",\n" +
+                 "             \"fixed the old Bugs\"]"
          val updatesinfo = JSONArray(arrayString1)
 
          var shell : Boolean = false
          var TAG : String = "ALEX"
          const val IMAGEBUTTO_NKEY = "imagebutton"
+         const val XPOSEMODE = "XPOSEMODE"
+         var libpath : String = ""
+         const val PtraceMode = "PtraceMode"
+         const val X86MODE = "X86MODE"
+
+
          const val GLOBAL_CHECKED_STATE_KEY = "globalCheckedState"
          const val GLOBAL2_CHECKED_STATE_KEY = "global2CheckedState"
          const val GLOBAL6_CHECKED_STATE_KEY = "global6CheckedState"
@@ -52,7 +58,7 @@ class global {
          val gamename = arrayOf(
               "com.pubg.imobile", //0
              "com.pubg.krmobile", //1
-             "com.dts.freefreth", // 2
+             "aw2g4esh4gse5h4r863s4h5se4h", // 2
              "com.pubg.vngmobile",// 3
              "com.tencent.ig"  , // 4
          "com.tencent.tmgp.pubgmhd")  // 5

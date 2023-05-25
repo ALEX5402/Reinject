@@ -17,7 +17,6 @@ class PointerAngel(mainActivity: MainActivity ) : AsyncTask <String, Void, Strin
     private val mainactivityy = WeakReference(mainActivity)
     var verify : Boolean = false
     @SuppressLint("SetWorldReadable", "SetWorldWritable")
-    @Suppress("UNREACHABLE_CODE")
     @Deprecated("Deprecated in Java")
     override fun doInBackground(vararg params: String?): String? {
         val downloadlink = params[ 0 ]
@@ -73,7 +72,7 @@ class PointerAngel(mainActivity: MainActivity ) : AsyncTask <String, Void, Strin
             result?.let { Log.d(TAG, it) }
             Log.i( TAG , "done")
         }else {
-        mainactivityy.get()?.somethingwrong()
+             mainactivityy.get()?.somethingwrong()
         }
 
     }
