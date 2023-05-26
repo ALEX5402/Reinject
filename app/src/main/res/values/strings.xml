@@ -5,7 +5,6 @@
         <item>com.pubg.krmobile</item>
         <item>com.pubg.vngmobile</item>
         <item>com.tencent.tmgp.pubgmhd</item>
-
     </string-array>
 
     <string name="Root" >Rooted</string>
@@ -32,7 +31,7 @@
     <string name="vng_m">VNG M</string>
     <string name="china_pubg">China Pubg</string>
     <string name="china">China</string>
-    <string name="gerena_freefire">Gerena Freefire</string>
+    <string name="gerena_freefire">Genera Free-fire</string>
     <string name="freef">64Bit</string>
     <string name="send_feedback">Send Feedback</string>
     <string name="please_wait">Please Wait</string>
@@ -43,11 +42,24 @@
     <string name="malicious">Malicious</string>
     <string name="x86_mode_for_emulators_beta">X86 Mode For Emulators (Coming Soon)</string>
     <string name="_64_bit_mode_ptrace_recomended">64 Bit Mode Ptrace (Recommended)</string>
-    <string name="_32_bit_mode_xposed_experimental">32 Bit Mode Xposed (experimental)</string>
-    <string name="select_artitecture">Select Artitecture</string>
-    <string name="xposed_description">Xposed Inject 2.3 (experimental)</string>
+    <string name="_32_bit_mode_xposed_experimental">32 Bit Mode Xposed (32 Bit Only)</string>
+    <string name="select_artitecture">Select Architecture</string>
+    <string name="xposed_description">Xposed Inject 2.5</string>
     <string name="clearcache" >Cache Cleared</string>
-    <string name="pleaserestartapp" >Pleasr Restart The Application To Take Effect</string>
+    <string name="pleaserestartapp" >Please Restart The Application To Take Effect</string>
+    <string name="Perfectsettings">Please Select Perfect Game settings and Restart The app</string>
+    <string name="shelldone">Shell Initialized</string>
+    <string name="devise_not_rooted">Device is Not rooted</string>
+    <string name="please_update">Please Update the app</string>
+    <string name="Device_disconnected">Please check Device Is Connected or not</string>
+    <string name="somethingWrong" >Something Went Wrong</string>
+    <string name="gameselection" >Please Select the game version</string>
+    <string name="isptracemode">Xposed Mode Disabled Injecting Using Ptrace</string>
+    <string name="Xposedmode" >Ptrace Mode Is disabled Injecting Using Xposed</string>
+    <string name="injecting">Injecting .....</string>
+    <string name="wannacloseme">If You Want To Close This Application ?</string>
+    <string name="servererr">Server is not responding</string>
+
 
 
 </resources>

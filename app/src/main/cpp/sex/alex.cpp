@@ -7,8 +7,8 @@
 extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_alex_injector_MainActivity_passwoeddd(JNIEnv *env, jobject clazz) {
-    return(*env).NewStringUTF(StrEnc("0yd[jAHsr K=UH~0j^la7KEP^8I>,",
-                                     "\x5D\x18\x0F\x2C\x07\x27\x26\x11\x13\x48\x3C\x57\x37\x2E\x09\x51\x00\x38\x02\x09\x40\x2A\x2F\x26\x3C\x5E\x2F\x5F\x5B", 29).c_str());
+    return(*env).NewStringUTF(StrEnc(" G}WM)T&qT7sw:4ov!d.[o7)>}0?xY1:"
+          ,"\x4A\x2F\x1C\x31\x2A\x48\x2D\x53\x06\x32\x5F\x12\x00\x50\x42\x0D\x10\x58\x10\x5B\x2C\x0E\x50\x5F\x58\x15\x51\x48\x1A\x3F\x48\x5D", 32).c_str());
 }
 extern "C"
 JNIEXPORT jstring JNICALL

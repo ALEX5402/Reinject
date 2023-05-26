@@ -12,8 +12,6 @@ import com.alex.injector.databinding.CrashHandlerBinding
 
 class CrashLoL : AppCompatActivity() {
 
-
-
     lateinit var  crashHandlerBinding: CrashHandlerBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,17 +26,17 @@ class CrashLoL : AppCompatActivity() {
         supportActionBar?.title = "Error reason "
 
         crashHandlerBinding  = CrashHandlerBinding.inflate(layoutInflater)
+
         setContentView(crashHandlerBinding.root)
 
         val value = intent.getStringExtra("logs")
         crashHandlerBinding.Crash.setText(value.toString())
 
-
     }
 
     fun alex (view: View) {
         try {
-            Toast.makeText(this, "saved to downloads dir", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "saved to /data/user/0/app/com.alex.injector.crashmanager/files/*.txt", Toast.LENGTH_SHORT)
                 .show()
             startActivity( Intent ( Intent.ACTION_VIEW, Uri.parse("https://t.me/ALEX5402")))
         } catch (e: Exception) {

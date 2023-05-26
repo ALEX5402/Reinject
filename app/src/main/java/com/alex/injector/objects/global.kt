@@ -6,15 +6,16 @@ class global {
 
      companion object {
 //        startup updatelog prefs key
-         var changes : String = "changes5"
-         val arrayString1 = "[ \"Added Xposed Api\",\n" +
-                 "             \"Improved Statusbar Colour\",\n" +
+         var changes : String = "changes7"
+         val arrayString1 = "[ \"Stable Xposed Api\",\n" +
+                 "             \"New Stable Release\",\n" +
+                 "             \"Improved Status bar Colour\",\n" +
                  "             \"Fixed 32 bit \",\n" +
                  "             \"Supports Lesposed\",\n" +
-                 "             \"Supports Xposed Old sks\",\n" +
+                 "             \"Supports Xposed Old Sdk\",\n" +
                  "             \"Support Emulators With Xposed Installed Only 32 bit\",\n" +
                  "             \"New Setting Tab\",\n" +
-                 "             \"fixed the old Bugs\"]"
+                 "             \"fixed the Root Non-root Boolean\"]"
          val updatesinfo = JSONArray(arrayString1)
 
          var shell : Boolean = false

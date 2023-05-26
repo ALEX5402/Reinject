@@ -3,6 +3,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET"   />
+    <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
 <!--      <uses-permission-sdk-23 android:name="android.permission.QUERY_ALL_PACKAGES" />-->
      <uses-permission-sdk-23 android:name="android.permission.QUERY_ALL_PACKAGES" android:minSdkVersion="30"/>
     <application

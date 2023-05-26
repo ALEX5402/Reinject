@@ -60,11 +60,14 @@ import com.android.volley.toolbox.Volley
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.topjohnwu.superuser.Shell
+import com.topjohnwu.superuser.internal.Utils
 import es.dmoral.toasty.Toasty
 import org.json.JSONArray
 import org.json.JSONException
+import java.io.BufferedReader
 import java.io.File
 import java.io.FileWriter
+import java.io.InputStreamReader
 import java.io.PrintWriter
 import java.io.StringWriter
 import java.text.SimpleDateFormat
@@ -122,7 +125,7 @@ class MainActivity : AppCompatActivity(){
             dafaultSetup()
             thread {
                 if (shell){
-                    Snackbar.make(binding.root , "Shell Initialized",Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(binding.root , R.string.shelldone,Snackbar.LENGTH_SHORT).show()
                 }
                 updateapi(this)
             }
@@ -249,11 +252,7 @@ class MainActivity : AppCompatActivity(){
                 }
 
             }
-
-
     }
-
-
 
     fun telegram ( view: View )
     {
@@ -287,30 +286,22 @@ class MainActivity : AppCompatActivity(){
          }
      }
 
+     @SuppressLint("RestrictedApi")
      private fun dafaultSetup() {
+         val utils = com.alex.injector.utils.Utils()
          if (!modelroot.files){
-             if (isRootAvailable())
-                 return defaultview()
-             if (Shell.isAppGrantedRoot() == false)
-                 return closesystem("Device is Not rooted")
-         }else{
+            if (utils.isRootGiven)
+            {
+                defaultview()
+            }else {
+                closesystem(R.string.devise_not_rooted.toString())
+            }
+         }
+         else
+         {
              checkfiles()
          }
-
-
-    }
-
-    fun isRootAvailable(): Boolean {
-        val pathDirs = System.getenv("PATH").split(":")
-        for (pathDir in pathDirs) {
-            if (File(pathDir, "su").exists()) {
-                return true
-            }
-        }
-        return false
-    }
-
-
+     }
     fun closesystem ( message: String  )
     {
         notrooted()
@@ -420,7 +411,7 @@ fun notrooted ( )
                    return importentNotice(this)
 
                 if (!(xposedmode or ptracemode))
-                    return Toasty.error(this,"Please Select Perfect Game settings and Restart The app",Toasty.LENGTH_LONG).show()
+                    return Toasty.error(this,R.string.Perfectsettings,Toasty.LENGTH_LONG).show()
                     binding.progressBar.visibility = View.VISIBLE
                     binding.setupfiles.visibility = View.GONE
                     binding.materialCardView3.isEnabled = false
@@ -430,13 +421,13 @@ fun notrooted ( )
 
             } else
             {
-                Toast.makeText(this,"Please Update the app",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,R.string.please_update,Toast.LENGTH_LONG).show()
             }
 
         }
         else
         {
-            Snackbar.make(view,"Please check Device Is Connected or not", Snackbar.LENGTH_LONG)
+            Snackbar.make(view,R.string.Device_disconnected, Snackbar.LENGTH_LONG)
                 .show()
         }
 
@@ -506,7 +497,7 @@ fun notrooted ( )
         binding.materialCardView3.isEnabled = true // setup button
         binding.progressBar.visibility = View.GONE
         binding.setupfiles.visibility = View.VISIBLE
-        Toasty.error(this , "Something Went Wrong",Toasty.LENGTH_SHORT).show()
+        Toasty.error(this , R.string.somethingWrong,Toasty.LENGTH_SHORT).show()
         defaultview()
     }
 
@@ -531,7 +522,7 @@ fun notrooted ( )
         val ptracemode = SharedPreferences.getBoolean(PtraceMode,false)
         val zippath = modelroot.finalzippath
        if(!versioncheck )
-          return Toasty.error(this, " Please Select the game version " , Toasty.LENGTH_LONG ) .show()
+          return Toasty.error(this, R.string.gameselection , Toasty.LENGTH_LONG ) .show()
         binding.loadingview.visibility = View.VISIBLE
         binding.animation.startAnim()
         binding.materialCardView.isEnabled = false
@@ -565,7 +556,7 @@ fun notrooted ( )
             }
         }else
         {
-            Toast.makeText(this,"Xposed Mode Disabled Injecting Useing ptrace",Toast.LENGTH_LONG).show()
+            Toast.makeText(this,R.string.isptracemode,Toast.LENGTH_LONG).show()
 
         }
         Log.i(TAG ,modelroot.packagename)
@@ -585,7 +576,7 @@ fun notrooted ( )
         }
         else
         {
-            Toast.makeText(this,"Ptrace Mode Is disabled Injecting Using Xposed",Toast.LENGTH_LONG).show()
+            Toast.makeText(this,R.string.Xposedmode,Toast.LENGTH_LONG).show()
         }
 
     }
@@ -608,7 +599,7 @@ fun notrooted ( )
                  val injector = handlerclass(this,pkg,libpath)
                  injector.Connect()
              },1500)
-         Toast.makeText(this , "Injecting ....." ,Toast.LENGTH_LONG).show()
+         Toast.makeText(this , R.string.injecting ,Toast.LENGTH_LONG).show()
          handler.postDelayed({
              alldone2()
          },2000)
@@ -619,7 +610,7 @@ fun notrooted ( )
         val dialog = MaterialAlertDialogBuilder(this)
         dialog.setTitle("Alert")
         dialog.setCancelable(false)
-        dialog.setMessage("If You Want To Close This Application ?")
+        dialog.setMessage(R.string.wannacloseme)
         dialog.setPositiveButton("Yes") { _, _ ->
             super.onBackPressed()
         }
@@ -678,8 +669,7 @@ fun notrooted ( )
             Toast.makeText(context, "Package $packageName not found in your device please install that", Toast.LENGTH_SHORT).show()
         }
     }
-
-
+    
     fun setupCrashLogging() {
         val defaultExceptionHandler = Thread.getDefaultUncaughtExceptionHandler()
         Thread.setDefaultUncaughtExceptionHandler { thread, exception ->
@@ -738,14 +728,11 @@ fun notrooted ( )
     }
 
     fun saveLogsToFile(logs: List<String>) {
-        val downloadDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+        val downloadDir = this.filesDir
         val fileName = logname() + "Injectorlogs.txt"
         val file = File(downloadDir, fileName)
-
-
         val sdf = SimpleDateFormat(" yyyy-MM-dd HH:mm:ss" , Locale.getDefault())
         val timestamp = sdf.format(Date())
-
         FileWriter(file).use { writer ->
             writer.append("Crash logs ($timestamp):\n\n")
             logs.forEach { log ->
@@ -875,7 +862,7 @@ fun notrooted ( )
                 }
             },
             {
-                toast("something wentwrong", 2000)
+                toast(R.string.somethingWrong.toString(), 2000)
             }
         )
        requestQueue.add(jsonObjectRequest)
@@ -904,7 +891,7 @@ fun notrooted ( )
         }
         dialog.setNegativeButton("Later") { _,_ ->
             val view = binding.root
-            Snackbar.make(view,"Please Update",Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(view,R.string.please_update,Snackbar.LENGTH_SHORT).show()
         }
         dialog.show()
     }
@@ -928,7 +915,7 @@ fun notrooted ( )
                 }
             },
            {
-                Toast.makeText(this, "Server is not responding", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.servererr, Toast.LENGTH_SHORT).show()
                modelroot.phreasedata = false
            }
         )

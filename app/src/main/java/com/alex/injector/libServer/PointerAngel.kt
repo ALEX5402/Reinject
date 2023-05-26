@@ -24,7 +24,9 @@ class PointerAngel(mainActivity: MainActivity ) : AsyncTask <String, Void, Strin
         val timestamp = System.currentTimeMillis()
         outputfile = File(tempDir, "$timestamp.zip")
 
-        val url = URL(downloadlink)
+        val url = downloadlink.let {
+            URL(it)
+        }
         var inputStream: InputStream? = null
         var outputStream: OutputStream? = null
 
@@ -40,16 +42,9 @@ class PointerAngel(mainActivity: MainActivity ) : AsyncTask <String, Void, Strin
                 byteread = inputStream.read(buff)
             }
             verify = true
-            val tempDir = File(System.getProperty("java.io.tmpdir") as String)
-            tempDir.setExecutable(true, false)
-            tempDir.setReadable(true, false)
-            tempDir.setWritable(true, false)
-            tempDir.walkTopDown().forEach { file ->
-                file.setExecutable(true, false)
-                file.setReadable(true, false)
-                file.setWritable(true, false)
+            File(outputfile.absolutePath).setExecutable(true)
+            File(outputfile.absolutePath).setWritable(true)
             return outputfile.absolutePath
-            }
         }catch (E : java.lang.Exception)
         {
             E.printStackTrace()
