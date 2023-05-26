@@ -75,7 +75,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics:18.3.7' // Optional, if you want to use Crashlytics
 
     //xposed api
-    implementation "de.robv.android.xposed:api:82"
+    implementation "de.robv.android.xposed:api:82" // remove this after build from dex
 
     //ktx
     implementation 'androidx.core:core-ktx:1.10.1'
