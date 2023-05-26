@@ -34,7 +34,7 @@ For support,
 ![image](https://github.com/ALEX5402/Reinject/blob/main/demo/Screenshot_2023-05-25-22-46-09-48_b7e9024f54bdc0532418cb6e23c85a7c.jpg)
 ![image](https://github.com/ALEX5402/Reinject/blob/main/demo/Screenshot_2023-05-25-22-46-05-97_b7e9024f54bdc0532418cb6e23c85a7c.jpg)
 
-[Demo Video](https://github.com/ALEX5402/Reinject/blob/main/demo/video_2023-05-16_21-30-43.mp4)
+[Demo Video](https://t.me/ReinjectOfficial/24)
 
 ## FAQ
 
