@@ -12,6 +12,7 @@ it is a simple app to use esp hacks on all pubg mobile with Root access no nesse
 - then simply install Reinject and enable this Modeule As Xposed Modeule 
 - Select Recomended apps what it Says 
 - done Ready to go
+- Launch the game from Reinject only else it Would't work
 
 ## Install Instructions
 
