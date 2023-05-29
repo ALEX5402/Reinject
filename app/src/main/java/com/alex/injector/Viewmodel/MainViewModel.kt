@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 
 class MainViewModel : ViewModel(){
 
+    var launchmode : Boolean = false
+    var libname : String = ""
     var check: Boolean = true
     var versionmanager: Boolean = false
     var finalzippath : String = ""

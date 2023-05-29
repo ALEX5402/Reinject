@@ -6,22 +6,18 @@
         <item>com.pubg.vngmobile</item>
         <item>com.tencent.tmgp.pubgmhd</item>
     </string-array>
-
+    <string name="xposed_description">Xposed Inject 2.6 For 32 Bit Pubg</string>
     <string name="Root" >Rooted</string>
     <string name="copy_right" translatable="false">Copyrights © %1$d</string>
     <!-- Strings used for fragments for navigation -->
     <string name="Clickhere">Click Here</string>
-
     <string name="version_1_1_0_beta_by_alex5402">Version : 6.0.2 Copyright By ALEX5402</string>
-
-    <string name="setup_fies">Setup Fies</string>
-
+    <string name="setup_fies">Setup Files</string>
     <string name="select_the_game">Game Mode 64bit</string>
     <string name="bigbit">Game Mode 64bit</string>
     <string name="smallbit">Game Mode 32bit</string>
     <string name="smallbits">32 bit</string>
     <string name="bigbits">64 bit</string>
-
     <string name="turn_on_hacks">Inject</string>
     <string name="india">INDIA</string>
     <string name="global">Global</string>
@@ -40,13 +36,12 @@
     <string name="clear_cache_files">Clear Cache files</string>
     <string name="support_me">Source Code</string>
     <string name="malicious">Malicious</string>
-    <string name="x86_mode_for_emulators_beta">X86 Mode For Emulators (Coming Soon)</string>
+    <string name="x86_mode_for_emulators_beta">Nonroot Virtual Mode (Coming Soon)</string>
     <string name="_64_bit_mode_ptrace_recomended">64 Bit Mode Ptrace (Recommended)</string>
     <string name="_32_bit_mode_xposed_experimental">32 Bit Mode Xposed (32 Bit Only)</string>
     <string name="select_artitecture">Select Architecture</string>
-    <string name="xposed_description">Xposed Inject 2.5</string>
-    <string name="clearcache" >Cache Cleared</string>
     <string name="pleaserestartapp" >Please Restart The Application To Take Effect</string>
+    <string name="Clearcache" >Please Restart The Application To Clear Cache</string>
     <string name="Perfectsettings">Please Select Perfect Game settings and Restart The app</string>
     <string name="shelldone">Shell Initialized</string>
     <string name="devise_not_rooted">Device is Not rooted</string>

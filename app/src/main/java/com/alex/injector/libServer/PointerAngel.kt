@@ -65,7 +65,7 @@ class PointerAngel(mainActivity: MainActivity ) : AsyncTask <String, Void, Strin
                 mainactivityy.get()?.alldone(it)
             }
             result?.let { Log.d(TAG, it) }
-            Log.i( TAG , "done")
+           // Log.i( TAG , "done")
         }else {
              mainactivityy.get()?.somethingwrong()
         }

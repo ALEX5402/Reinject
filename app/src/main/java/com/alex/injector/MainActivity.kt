@@ -60,14 +60,11 @@ import com.android.volley.toolbox.Volley
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.topjohnwu.superuser.Shell
-import com.topjohnwu.superuser.internal.Utils
 import es.dmoral.toasty.Toasty
 import org.json.JSONArray
 import org.json.JSONException
-import java.io.BufferedReader
 import java.io.File
 import java.io.FileWriter
-import java.io.InputStreamReader
 import java.io.PrintWriter
 import java.io.StringWriter
 import java.text.SimpleDateFormat
@@ -118,17 +115,23 @@ class MainActivity : AppCompatActivity(){
             val libv2 = global.libv2()
             val libv3 = global.libv3()
             val libv4 = global.libv4()
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+            val SharedPreferences = this.getSharedPreferences("Settings", Context.MODE_PRIVATE)
+            val xposedmode = SharedPreferences.getBoolean(XPOSEMODE,false)
+            binding = ActivityMainBinding.inflate(layoutInflater)
+            setContentView(binding.root)
             setupCrashLogging()
             dafaultSetup()
-            thread {
-                if (shell){
-                    Snackbar.make(binding.root , R.string.shelldone,Snackbar.LENGTH_SHORT).show()
-                }
-                updateapi(this)
+        if (!modelroot.launchmode) {
+            if (shell){
+                Snackbar.make(binding.root , "Shell Initialized",Snackbar.LENGTH_SHORT).show()
             }
+            clearCacheFiles(this)
+            val handler = Handler()
+            handler.postDelayed({
+                updateapi(this)
+                importent_news(this)
+            },1000)
+        }
             thread {
                 if (!modelroot.deletefiles)
                 {
@@ -151,40 +154,47 @@ class MainActivity : AppCompatActivity(){
 
                 }
             }
-  thread {
-      phreasedata()
-      if (savedInstanceState != null) {
-        binding.imageFilterButton.visibility = savedInstanceState.getInt(IMAGEBUTTO_NKEY)
-        binding.card.visibility = savedInstanceState.getInt(CARD_VISIBILITY_KEY)
-        binding.global2.visibility = savedInstanceState.getInt(GLOBAL2_VISIBILITY_KEY)
-        binding.global8.visibility = savedInstanceState.getInt(GLOBAL8_VISIBILITY_KEY)
-        binding.global6.visibility = savedInstanceState.getInt(GLOBAL6_VISIBILITY_KEY)
-        binding.global5.visibility = savedInstanceState.getInt(GLOBAL5_VISIBILITY_KEY)
-        binding.global.visibility = savedInstanceState.getInt(GLOBAL_VISIBILITY_KEY)
-        binding.global7.visibility = savedInstanceState.getInt(GLOBAL7_VISIBILITY_KEY)
-        binding.materialCardView.visibility = savedInstanceState.getInt(HACK_BUTTON_VISIBILITY_KEY)
-        binding.materialCardView3.visibility = savedInstanceState.getInt(SETUP_BUTTON_VISIBILITY_KEY)
-        binding.progressBar.visibility = savedInstanceState.getInt(PROGRESS_BAR)
-        binding.setupfiles.visibility = savedInstanceState.getInt(SETUP_FILES_VISIBILITY_KEY)
-        binding.loadingview.visibility = savedInstanceState.getInt(LOADING_VIEW_VISIBILITY_KEY)
-        binding.global.isChecked = savedInstanceState.getBoolean(GLOBAL_CHECKED_STATE_KEY)
-        binding.global2.isChecked = savedInstanceState.getBoolean(GLOBAL2_CHECKED_STATE_KEY)
-        binding.global6.isChecked = savedInstanceState.getBoolean(GLOBAL6_CHECKED_STATE_KEY)
-        binding.global5.isChecked = savedInstanceState.getBoolean(GLOBAL5_CHECKED_STATE_KEY)
-        binding.global5.isChecked = savedInstanceState.getBoolean(GLOBAL3_CHECKED_STATE_KEY)
-    }
+            thread {
+                phreasedata()
+                if (savedInstanceState != null) {
+                    binding.imageFilterButton.visibility = savedInstanceState.getInt(IMAGEBUTTO_NKEY)
+                    binding.card.visibility = savedInstanceState.getInt(CARD_VISIBILITY_KEY)
+                    binding.global2.visibility = savedInstanceState.getInt(GLOBAL2_VISIBILITY_KEY)
+                    binding.global8.visibility = savedInstanceState.getInt(GLOBAL8_VISIBILITY_KEY)
+                    binding.global6.visibility = savedInstanceState.getInt(GLOBAL6_VISIBILITY_KEY)
+                    binding.global5.visibility = savedInstanceState.getInt(GLOBAL5_VISIBILITY_KEY)
+                    binding.global.visibility = savedInstanceState.getInt(GLOBAL_VISIBILITY_KEY)
+                    binding.global7.visibility = savedInstanceState.getInt(GLOBAL7_VISIBILITY_KEY)
+                    binding.materialCardView.visibility = savedInstanceState.getInt(HACK_BUTTON_VISIBILITY_KEY)
+                    binding.materialCardView3.visibility = savedInstanceState.getInt(SETUP_BUTTON_VISIBILITY_KEY)
+                    binding.progressBar.visibility = savedInstanceState.getInt(PROGRESS_BAR)
+                    binding.setupfiles.visibility = savedInstanceState.getInt(SETUP_FILES_VISIBILITY_KEY)
+                    binding.loadingview.visibility = savedInstanceState.getInt(LOADING_VIEW_VISIBILITY_KEY)
+                    binding.global.isChecked = savedInstanceState.getBoolean(GLOBAL_CHECKED_STATE_KEY)
+                    binding.global2.isChecked = savedInstanceState.getBoolean(GLOBAL2_CHECKED_STATE_KEY)
+                    binding.global6.isChecked = savedInstanceState.getBoolean(GLOBAL6_CHECKED_STATE_KEY)
+                    binding.global5.isChecked = savedInstanceState.getBoolean(GLOBAL5_CHECKED_STATE_KEY)
+                    binding.global5.isChecked = savedInstanceState.getBoolean(GLOBAL3_CHECKED_STATE_KEY)
+                }
 
-}
-
+            }
+            modelroot.launchmode = true
             Changes("Whats new in this Update", updatesinfo)
-        binding.imageFilterButton.setOnClickListener {
-            val intent = Intent(this,Settings::class.java)
-            startActivity(intent)
-            overridePendingTransition(R.anim.slide_in_right,R.anim.activity_out)
-        }
+            binding.imageFilterButton.setOnClickListener {
+                val intent = Intent(this,Settings::class.java)
+                startActivity(intent)
+                overridePendingTransition(R.anim.slide_in_right,R.anim.activity_out)
+            }
             binding.global.setOnCheckedChangeListener { _  , isChecked ->
                 if (isChecked) {
-                    modelroot.libpath = localpath+libv1
+                    if (xposedmode)
+                    {
+                        modelroot.libpath = localpath+libv3
+                        modelroot.libname = libv3
+                    }else{
+                        modelroot.libpath = localpath+libv1
+                        modelroot.libname = libv1
+                    }
                     modelroot.packagename = gamename[5]
                     modelroot.versionmanager = true
                     binding.global2.isChecked = false
@@ -198,7 +208,14 @@ class MainActivity : AppCompatActivity(){
 
             binding.global2.setOnCheckedChangeListener { _  , isChecked ->
                 if (isChecked) {
-                  modelroot.libpath = localpath+libv1
+                    if (xposedmode)
+                    {
+                        modelroot.libpath = localpath+libv3
+                        modelroot.libname = libv3
+                    }else{
+                        modelroot.libpath = localpath+libv1
+                        modelroot.libname = libv1
+                    }
                     modelroot.packagename = gamename[4]
                     modelroot.versionmanager = true
                     binding.global.isChecked = false
@@ -211,8 +228,15 @@ class MainActivity : AppCompatActivity(){
             }
             binding.global8.setOnCheckedChangeListener { _  , isChecked -> // bgmi
                 if (isChecked) {
-                    modelroot.libpath = localpath+libv2
-                  modelroot.packagename = gamename[0]
+                    if (xposedmode)
+                    {
+                        modelroot.libpath = localpath+libv4
+                        modelroot.libname = libv4
+                    }else{
+                        modelroot.libpath = localpath+libv2
+                        modelroot.libname = libv2
+                    }
+                    modelroot.packagename = gamename[0]
                     modelroot.versionmanager= true
                     binding.global.isChecked = false
                     binding.global2.isChecked = false
@@ -225,7 +249,14 @@ class MainActivity : AppCompatActivity(){
             }
             binding.global6.setOnCheckedChangeListener { _  , isChecked ->
                 if (isChecked) {
-                    modelroot.libpath = localpath+libv1
+                    if (xposedmode)
+                    {
+                        modelroot.libpath = localpath+libv3
+                        modelroot.libname = libv3
+                    }else{
+                        modelroot.libpath = localpath+libv1
+                        modelroot.libname = libv1
+                    }
                     modelroot.packagename = gamename[1]
                     Log.i(TAG , gamename[1])
                     modelroot.versionmanager= true
@@ -240,7 +271,14 @@ class MainActivity : AppCompatActivity(){
             }
             binding.global5.setOnCheckedChangeListener { _  , isChecked ->
                 if (isChecked) {
-                    modelroot.libpath = localpath+libv1
+                    if (xposedmode)
+                    {
+                        modelroot.libpath = localpath+libv3
+                        modelroot.libname = libv3
+                    }else{
+                        modelroot.libpath = localpath+libv1
+                        modelroot.libname = libv1
+                    }
                     modelroot.packagename = gamename[3]
                     modelroot.versionmanager= true
                     binding.global.isChecked = false
@@ -252,7 +290,7 @@ class MainActivity : AppCompatActivity(){
                 }
 
             }
-    }
+        }
 
     fun telegram ( view: View )
     {
@@ -538,14 +576,12 @@ fun notrooted ( )
         if (xposedmode)
         {
             try {
-
-                global.libpath = modelroot.libpath
                 if (isfileExist(zippath))
                 {
-                    val extract = Extract(zippath , this,true,modelroot.packagename,true)
+                    val extract = Extract(zippath , this,true,modelroot.packagename,true,modelroot.libname)
                     extract.execute("i love you")
                 }else {
-                    val extract2 = Extract(zippath , this,true,modelroot.packagename,false)
+                    val extract2 = Extract(zippath , this,true,modelroot.packagename,false,modelroot.libname)
                     extract2.execute("i love you")
                 }
 
@@ -566,10 +602,10 @@ fun notrooted ( )
 
             if (isfileExist(zippath))
             {
-                val extract = Extract(zippath , this,false,modelroot.packagename,true)
+                val extract = Extract(zippath , this,false,modelroot.packagename,true,modelroot.libname)
                 extract.execute("i love you")
             } else {
-                val extract = Extract(zippath , this,false,modelroot.packagename,false)
+                val extract = Extract(zippath , this,false,modelroot.packagename,false,modelroot.libname)
                 extract.execute("i love you")
 
             }
@@ -625,8 +661,11 @@ fun notrooted ( )
             try {
                 val server = realtimedatabase(
                     responce.getString("opentime"),
-                    responce.getString("servermeassage"))
-
+                    responce.getString("servermeassage"),
+                    responce.getString("notice_title"),
+                    responce.getString("notice_body"),
+                    responce.getString("noticemode")
+                )
                 shownotice(server)
             }catch (E: Exception)
             {
@@ -640,6 +679,45 @@ fun notrooted ( )
         )
         requestQueue.add(jsonObjectRequest)
     }
+    fun importent_news ( context: Context)
+    {
+        val requestQueue : RequestQueue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(Request.Method.GET , global.jsondata() , null, {responce ->
+            try {
+                val server = realtimedatabase(
+                    responce.getString("opentime"),
+                    responce.getString("servermeassage"),
+                    responce.getString("notice_title"),
+                    responce.getString("notice_body"),
+                    responce.getString("noticemode")
+                )
+                news(server)
+            }catch (E: Exception)
+            {
+                E.printStackTrace()
+            }
+        }, {
+            toast("something is wrong", 1000)
+        }
+
+
+        )
+        requestQueue.add(jsonObjectRequest)
+    }
+
+    fun news ( realtimedatabase: realtimedatabase)
+    {
+        val newsbool = realtimedatabase.noticemode.toBoolean()
+        val alertDialog = MaterialAlertDialogBuilder(this)
+        .setTitle(realtimedatabase.notice_title)
+        .setMessage(realtimedatabase.notice_body)
+        .setPositiveButton("ok") {_,haha -> }
+        if (newsbool)
+        {
+            alertDialog.show()
+        }
+    }
+
 
     fun shownotice ( realtimedatabase: realtimedatabase)
     {
@@ -922,7 +1000,18 @@ fun notrooted ( )
         requestQueue.add(jsonObjectRequest)
 
     }
-
+    fun clearCacheFiles(context: Context) {
+        val cacheDir = context.cacheDir // Get the cache directory
+        if (cacheDir.exists()) {
+            val files = cacheDir.listFiles() // Get all files in the cache directory
+            if (files != null) {
+                for (file in files) {
+                    file.delete() // Delete each file
+                }
+                Log.w("Cache" , "All files are cleared")
+            }
+        }
+    }
     fun isfileExist ( path : String) : Boolean {
         val file = File(path)
         return file.exists()

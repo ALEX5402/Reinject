@@ -36,7 +36,7 @@ class CrashLoL : AppCompatActivity() {
 
     fun alex (view: View) {
         try {
-            Toast.makeText(this, "saved to /data/user/0/app/com.alex.injector.crashmanager/files/*.txt", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "saved to /data/user/0/app/com.alex.injector.crashmanager/files/*.txt", Toast.LENGTH_LONG)
                 .show()
             startActivity( Intent ( Intent.ACTION_VIEW, Uri.parse("https://t.me/ALEX5402")))
         } catch (e: Exception) {

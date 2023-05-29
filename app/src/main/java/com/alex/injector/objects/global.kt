@@ -6,23 +6,24 @@ class global {
 
      companion object {
 //        startup updatelog prefs key
-         var changes : String = "changes7"
-         val arrayString1 = "[ \"Stable Xposed Api\",\n" +
-                 "             \"New Stable Release\",\n" +
-                 "             \"Improved Status bar Colour\",\n" +
-                 "             \"Fixed 32 bit \",\n" +
-                 "             \"Supports Lesposed\",\n" +
-                 "             \"Supports Xposed Old Sdk\",\n" +
-                 "             \"Support Emulators With Xposed Installed Only 32 bit\",\n" +
-                 "             \"New Setting Tab\",\n" +
-                 "             \"fixed the Root Non-root Boolean\"]"
+         var changes : String = "changes8"
+         val arrayString1 = "[ \"Some Internal Code Improved\",\n" +
+//                 "             \"New Stable Release\",\n" +
+//                 "             \"Improved Status bar Colour\",\n" +
+//                 "             \"Fixed 32 bit \",\n" +
+//                 "             \"Supports Lesposed\",\n" +
+//                 "             \"Supports Xposed Old Sdk\",\n" +
+//                 "             \"Support Emulators With Xposed Installed Only 32 bit\",\n" +
+//                 "             \"New Setting Tab\",\n" +
+                 "             \"fixed the Lib Copy Ishu\"]"
+
+
          val updatesinfo = JSONArray(arrayString1)
 
          var shell : Boolean = false
          var TAG : String = "ALEX"
          const val IMAGEBUTTO_NKEY = "imagebutton"
          const val XPOSEMODE = "XPOSEMODE"
-         var libpath : String = ""
          const val PtraceMode = "PtraceMode"
          const val X86MODE = "X86MODE"
 

@@ -14,7 +14,7 @@ class Clear {
             if (checkfile(tempdir+libname))
             {
                 System.load(tempdir+libname)
-
+                XposedBridge.log(tempdir+libname)
                 Thread.sleep(1000) // dont remove this delay
                 delete(tempdir+libname)
             }else{
