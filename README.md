@@ -1,7 +1,7 @@
 
 # Reinject 
 - Pubgm 2.6.1
-- Bgmi 2.1.0
+- Bgmi 2.5.0
 
 it is a simple app to use esp hacks on all pubg mobile with Root access no nessessery magisk module need to make it work
 
