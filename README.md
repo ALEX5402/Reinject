@@ -1,5 +1,5 @@
 
-# Reinject 
+# Reinject [![GitHub Repo stars](https://img.shields.io/github/stars/Alex5402/Reinject?style=social)](https://github.com/Alex5402/Reinject)
 - Pubgm 2.6.1
 - Bgmi 2.5.0
 
