@@ -10,12 +10,12 @@ it is a simple app to use esp hacks on all pubg mobile with Root access no nesse
 
 # To Make It Work On 32 Bit Games Do this
 
-- download the laest version of Xposed Frame Work [Xposed download](https://github.com/LSPosed/LSPosed/releases/tag/v1.8.6)
-- then falash it to magisk and reboot 
-- then simply install Reinject and enable this Modeule As Xposed Modeule 
-- Select Recomended apps what it Says 
+- download the last version of Xposed Frame Work [Xposed download](https://github.com/LSPosed/LSPosed/releases/tag/v1.8.6)
+- then flash it to magisk and reboot 
+- then simply install Reinject and enable this Module As Xposed Module 
+- Select Recommended apps what it Says 
 - done Ready to go
-- Launch the game from Reinject only else it Would't work
+- Launch the game from Reinject only else it Wouldn't work
 
 ## Install Instructions
 
@@ -48,7 +48,7 @@ Some work and may be some not.
 
 #### Is it safe to use on Real id ?
 
-No not it is for educational perpose only. 
+No not it is for educational purpose only. 
 
 
 ## License
