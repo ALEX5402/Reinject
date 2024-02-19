@@ -1,4 +1,3 @@
-
 # Reinject [![GitHub Repo stars](https://img.shields.io/github/stars/Alex5402/Reinject?style=social)](https://github.com/Alex5402/Reinject)
 
 ![.](/iiii.png?raw=true "Reinject")
@@ -6,7 +5,7 @@
 - Pubgm 2.6.1
 - Bgmi 2.5.0
 
-it is a simple app to use esp hacks on all pubg mobile with Root access no nessessery magisk module need to make it work
+it is a simple app to use esp hacks on all pubg mobile with Root access no necessary magisk module need to make it work
 
 # To Make It Work On 32 Bit Games Do this
 
@@ -19,7 +18,7 @@ it is a simple app to use esp hacks on all pubg mobile with Root access no nesse
 
 ## Install Instructions
 
-- download the laest apk from [release](https://github.com/ALEX5402/Reinject/releases) section and simply install it
+- download the latest apk from [release](https://github.com/ALEX5402/Reinject/releases) section and simply install it
 - you just need a rooted device only
 - some emulators may not work because of x86
 ## Support
@@ -65,28 +64,3 @@ in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-## 🔗 Links
-[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/shellstr0m)
-
-
-## Related
-
-Here are some related projects
-
-- [Reveny](https://github.com/reveny) for ptrace injector
-- [John Wu](https://github.com/topjohnwu) for lib su
-- [ldoublem](https://github.com/ldoublem) for Loading animation
-- [Me😇](https://github.com/alex5402) for made this project opensource
-
