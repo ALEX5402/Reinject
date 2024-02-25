@@ -1,4 +1,4 @@
-# I am gonna no longer mentain this project gyes
+# I am gonna no longer mentain this project
 
 # Reinject [![GitHub Repo stars](https://img.shields.io/github/stars/Alex5402/Reinject?style=social)](https://github.com/Alex5402/Reinject)
 
