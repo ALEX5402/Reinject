@@ -2,48 +2,16 @@
 
 ![.](/iiii.png?raw=true "Reinject")
 
-- Pubgm 2.6.1
-- Bgmi 2.5.0
+<img width="1152" height="2560" alt="image" src="https://github.com/user-attachments/assets/12c7a475-2e92-4a35-b59f-8a7168319d14" />
+<img width="1152" height="2560" alt="image" src="https://github.com/user-attachments/assets/44436f55-abe8-486f-8973-59204ee482cd" />
+<img width="1152" height="2560" alt="image" src="https://github.com/user-attachments/assets/2860ffe9-61fd-4c23-b98d-c718fc49bb5e" />
+<img width="1152" height="2560" alt="image" src="https://github.com/user-attachments/assets/f30b438e-13fb-4540-b3a9-ea9043f96899" />
+<img width="1152" height="2560" alt="image" src="https://github.com/user-attachments/assets/90ea4621-ea82-4a0e-8392-ada625eedba4" />
+<img width="1152" height="2560" alt="image" src="https://github.com/user-attachments/assets/5ec287ab-ec8f-4349-a477-95724481cfd8" />
 
-it is a simple app to use esp hacks on all pubg mobile with Root access no necessary magisk module need to make it work
+This project will be continue with zerolag kernel 
 
-# To Make It Work On 32 Bit Games Do this
-
-- download the last version of Xposed Frame Work [Xposed download](https://github.com/LSPosed/LSPosed/releases/tag/v1.8.6)
-- then flash it to magisk and reboot 
-- then simply install Reinject and enable this Module As Xposed Module 
-- Select Recommended apps what it Says 
-- done Ready to go
-- Launch the game from Reinject only else it Wouldn't work
-
-## Install Instructions
-
-- download the latest apk from [release](https://github.com/ALEX5402/Reinject/releases) section and simply install it
-- you just need a rooted device only
-- some emulators may not work because of x86
-## Support
-
-For support,
- [Telegram](t.me//alex5402)
-[Support Group](https://t.me/ReinjectOfficial)
-
-
-## Screenshots
-
-![App Screenshot](https://github.com/ALEX5402/Reinject/blob/main/demo/photo_2023-05-16_21-31-14.jpg)
-
-![image](https://github.com/ALEX5402/Reinject/blob/main/demo/photo_2023-05-16_21-31-27.jpg)
-
-![image](https://github.com/ALEX5402/Reinject/blob/main/demo/Screenshot_2023-05-25-22-46-09-48_b7e9024f54bdc0532418cb6e23c85a7c.jpg)
-![image](https://github.com/ALEX5402/Reinject/blob/main/demo/Screenshot_2023-05-25-22-46-05-97_b7e9024f54bdc0532418cb6e23c85a7c.jpg)
-
-[Demo Video](https://t.me/ReinjectOfficial/24)
-
-## FAQ
-
-#### Is it work on emulator ?
-
-Some work and may be some not.
+visit https://t.me/ZeroLagKernels for updates
 
 #### Is it safe to use on Real id ?
 
