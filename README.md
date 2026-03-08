@@ -39,7 +39,7 @@ For the latest news, releases, and support, join our Telegram community:
 
 ## ⚖️ License
 
-Distributed under the **MIT License**. See `LICENSE` for more information.
+All right Resarved by ZeroLagKernels Team
 
 ---
 *Created by [Alex](https://github.com/Alex5402)*
